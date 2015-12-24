@@ -1,3 +1,4 @@
+;; Enable package management with MELPA
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
@@ -13,7 +14,7 @@
   (package-refresh-contents))
 
 ;; Define packages and ensure all are installed
-(defvar my-packages '(evil company solarized-theme))
+(defvar my-packages '(evil company solarized-theme xah-elisp-mode))
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
@@ -28,3 +29,10 @@
 
 ;; Sane backspace behaviour
 (define-key key-translation-map [?\C-h] [?\C-?])
+
+;; Line numbers in all buffers
+(global-linum-mode 1)
+
+;; Disable GUI elements
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
