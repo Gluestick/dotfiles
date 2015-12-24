@@ -13,10 +13,18 @@
   (package-refresh-contents))
 
 ;; Define packages and ensure all are installed
-(defvar my-packages '(evil company))
+(defvar my-packages '(evil company solarized-theme))
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
 
+;; Enable ViM emulation
 (require 'evil)
 (evil-mode 1)
+
+;; Solarize emacs
+(require 'solarized)
+(load-theme 'solarized-dark t)
+
+;; Sane backspace behaviour
+(define-key key-translation-map [?\C-h] [?\C-?])
